@@ -1,0 +1,15 @@
+<div>
+    <form [formGroup]="heroForm" (ngSubmit)="saveHero()">
+        <div>
+            <div class="flex flex-col">
+                <label for="id">Rank</label>
+                <input name="name" formControlName="id">
+            </div>
+            <div class="flex flex-col">
+                <label for="name">Name</label>
+                <input name="name" formControlName="name">
+            </div>
+        </div>
+        <button class="bg-blue-400 px-6 py-2 rounded-lg" type="submit">Save</button>
+    </form>
+</div>

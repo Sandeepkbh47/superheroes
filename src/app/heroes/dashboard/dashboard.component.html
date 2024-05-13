@@ -1,0 +1,38 @@
+<div>
+    <div class="w-56 h-fit flex justify-center place-content-center text-white">
+        <span class=" m-4 font-bold rounded bg-gradient-to-r from-violet-500 to-fuchsia-500 text-lg font-serif">Top
+            Heroes</span>
+    </div>
+    <div class="overflow-auto w-full gap-4 h-max bg-gray-300 flex px-14 flex-wrap place-content-evenly">
+        <!-- {{heroes|json}} -->
+        @defer{
+        @for(hero of heroObservable$ |async;track $index){
+        <div class="flow rounded-md flex flex-col relative" (click)="heroDetails(hero.id)">
+            <div
+                class=" rounded-2xl absolute z-2 opacity-75 w-full h-full bg-red-700 border border-solid border-gray-100">
+
+            </div>
+            <div
+                class="w-full h-full absolute z-3 text-white text-xl flex flex-col place-content-center place-items-center">
+                <div class="text-6xl">{{hero.id}}</div>
+                <div class="break-words text-2xl drop-shadow-lg">{{hero.name}}</div>
+            </div>
+            <img class="w-56 z-2 rounded-2xl" [src]="'./assets/images/'+hero.profile">
+        </div>
+        }
+        }
+        @loading(after 2s;minimum 2s){
+        <div>
+            <span>Loading the heroes ground</span>
+        </div>
+        }
+        <!-- @placeholder(minimum 3s){
+        <div>
+            <span>waiting for heroes</span>
+        </div>q
+        } -->
+
+
+    </div>
+    <!-- <div (click)="fetchHeroes()">Fetch Heroes</div> -->
+</div>
